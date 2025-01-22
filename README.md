@@ -20,7 +20,7 @@ docker-compose run web python manage.py test
 
 2. [B] Run test if you have container already running:
 ```bash
-docker exec -it ai-infrasolutions-web-1 python manage.py test
+docker exec -it django-geojson-web-1 python manage.py test
 ```
 
 ### Running the website
@@ -33,9 +33,9 @@ docker-compose up
 ### Populate database with features
 1. Run the feature population script:
 ```bash
-docker exec -it ai-infrasolutions-web-1 python post_features.py
+docker exec -it django-geojson-web-1 python post_features.py
 ```
-*Note: The container name 'ai-infrasolutions-web-1' may differ if multiple containers were built*
+*Note: The container name 'django-geojson-web-1' may differ if multiple containers were built*
 
 
 ### Acquire JWT
