@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    image: postgis/postgis
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: geojson_db
+    ports:
+      - "5432:5432"
+    restart: always
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    restart: always
+  web:
+    build: .
+    # command: python manage.py runserver 0.0.0.0:8000
+    entrypoint: /app/entrypoint.sh
+    environment:
+      - DJANO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
