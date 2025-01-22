@@ -15,7 +15,7 @@ docker-compose build
 
 2. [A] Run the tests:
 ```bash
-docker-compose run web python manage.py test
+docker-compose run --entrypoint /app/entrypoint-test.sh web
 ```
 
 2. [B] Run test if you have container already running:

@@ -12,5 +12,7 @@ COPY . .
 
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint-test.sh /entrypoint-test.sh
 RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint-test.sh
 # ENTRYPOINT ["/entrypoint.sh"]
